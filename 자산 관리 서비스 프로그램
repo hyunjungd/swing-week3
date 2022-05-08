@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+void myaccounts(string* p, int* q)        //은행 계좌 별 금액 출력
+{
+	cout << "----------------- 은행 별 계좌 정보 -----------------" << endl;
+	cout << "|   " << *p << "   |   " << *(p + 1) << "   |    " << *(p + 2) << "     |    " << *(p + 3) << "    |" << endl;
+	cout << "|   " << *q << "   |   " << *(q + 1) << "   |     "<< *(q + 2) << "       |    " << *(q + 3) << "      |" << endl;
+	cout << "-----------------------------------------------------" << endl;
+}
+
+int total(int* p)                        //모든 은행 계좌 금액의 총합
+{
+	int total_money = 0;
+	for (int i = 0; i < 4; i++)
+		total_money += *(p + i);
+	return total_money;
+}
+
+int main(void)
+{
+	cout << "*************** SWING 자산 관리 서비스 ***************" << endl;
+
+	string bank_name[4] = { "하나","우리","신한","국민"};                           //은행 명을 저장할 배열
+	int bank[4] = { 5000,4000,0,10 };                                              //은행 별 금액을 저장할 배열
+
+	myaccounts(&bank_name[0], &bank[0]);
+
+	int total_money = total(&bank[0]);                                             //전체 자산을 저장할 변수
+	cout << "현재 SWING 자산관리 서비스에 등록된 회원님의 총 자산은 " << total_money << "원 입니다." << endl;
+
+	cout << "******************************************************" << endl;
+
+	return 0;
+}
